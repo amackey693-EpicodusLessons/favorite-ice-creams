@@ -1,16 +1,20 @@
 $(document).ready(function(){
-  $("form").submit(function(event){
+  $("form#word-play").submit(function(event){
     event.preventDefault();
     var sentence = $("input#sentence").val().split(" ");
     var newSentence = [];
 
+    // var newSentence = words.filter(word => word.length >-3);
+    // if you use this ^^ you don't need the following syntax. You can accomplish putting together the newSentence with the syntax listed above. Study this further. 
+
     sentence.forEach(word => {
       if (word.length >= 3) {
-        newSentence.push(" " + word);
+        newSentence.push(word);
       } 
     });
 
-    $(".answer").text(newSentence + " I'm not sure" + " , it appears it does")
-    console.log(newSentence)
+    var reverseSentence = newSentence.reverse().join(" ");
+    $(".answer").text(reverseSentence);
+  
   });
 });
