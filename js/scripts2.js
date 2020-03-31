@@ -1,21 +1,16 @@
 $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
-    var sentence = $("input#sentence").val();
-    var sentenceArray = sentence.split(" ");
+    var sentence = $("input#sentence").val().split(" ");
+    var newSentence = [];
 
-    // instantiate a new empty array 
-    console.log(sentenceArray);
-
-    sentenceArray.map(function(word){
-      // var index = [1,2,3];
-      var sort = $("input#sentence"+ word).length(3)); 
-         console.log(sort);
+    sentence.forEach(word => {
+      if (word.length >= 3) {
+        newSentence.push(" " + word);
+      } 
     });
 
-    // forEach loop through sentenceArray
-      // use simple branching to see if the word.length is greater than 2
-        // push to the new array
-
+    $(".answer").text(newSentence + " I'm not sure" + " , it appears it does")
+    console.log(newSentence)
   });
 });
